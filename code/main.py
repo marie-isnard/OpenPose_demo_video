@@ -22,7 +22,6 @@ output_video = cv.VideoWriter(os.path.join(output_path, 'output_{}_{}_{}_test.av
 
 while cap.isOpened():
     hasFrame, frame = cap.read()
-    print('reading')
     if not hasFrame:
         print('no more frames! Program shutdown')
         cv.waitKey()
@@ -56,8 +55,7 @@ while cap.isOpened():
             cv.ellipse(frame, points[idFrom], (3, 3), 0, 0, 360, (0, 0, 255), cv.FILLED)
             cv.ellipse(frame, points[idTo], (3, 3), 0, 0, 360, (0, 0, 255), cv.FILLED)
             output_video.write(frame)
-            print('writing')
-
+            
 t, _ = net.getPerfProfile()
 cap.release()
 output_video.release()
